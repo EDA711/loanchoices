@@ -1,0 +1,45 @@
+loan_type = input("What type of loan are you applying for? (VA, FHA, USDA, Conventional): ")
+household_income = int(input("What is your total household income? "))
+is_veteran = input("Are you a veteran? (Y/N): ").lower()
+is_rural = input("Is the property you are purchasing located in a rural area? (Y/N): ").lower()
+
+if loan_type == "VA":
+    if is_veteran == "y":
+        credit_score = int(input("What is your credit score? "))
+        if credit_score >= 640:
+            print("Congratulations! You are eligible for a VA loan with no down payment.")
+        else:
+            print("Sorry, you are not eligible for a VA loan.")
+    else:
+        print("Sorry, only veterans are eligible for VA loans.")
+        
+elif loan_type == "FHA":
+    credit_score = int(input("What is your credit score? "))
+    if credit_score >= 620:
+        print("Congratulations! You are eligible for an FHA loan with a 3.5% down payment.")
+    else:
+        print("Sorry, you are not eligible for an FHA loan.")
+        
+elif loan_type == "USDA":
+    if household_income < 100000 and is_rural == "y":
+        credit_score = int(input("What is your credit score? "))
+        if credit_score >= 640:
+            print("Congratulations! You are eligible for a USDA loan with no down payment.")
+        else:
+            print("Sorry, you are not eligible for a USDA loan.")
+    else:
+        print("Sorry, you are not eligible for a USDA loan.")
+        
+elif loan_type == "Conventional":
+    credit_score = int(input("What is your credit score? "))
+    if credit_score >= 680:
+        down_payment = float(input("What percentage of down payment can you afford? "))
+        if down_payment >= 20:
+            print("Congratulations! You are eligible for a conventional loan.")
+        else:
+            print("Sorry, you need to have at least 20% down payment for a conventional loan.")
+    else:
+        print("Sorry, you are not eligible for a conventional loan.")
+        
+else:
+    print("Invalid loan type. Please choose from VA, FHA, USDA, or Conventional.")
